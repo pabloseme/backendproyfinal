@@ -1,5 +1,6 @@
 const express = require('express') //importar la libreri a de express
 const {dbConnection}=require('../database/config')
+const cors = require('cors')
 
 class Server{
     constructor(){
@@ -29,6 +30,9 @@ class Server{
 
         //lee en formato json lo que viene desde el front
         this.app.use(express.json());
+
+        //agrego los cors para permitir peticiones desde otro direcciones
+        this.app.use(cors())
     
         //defino una carpeta publica
         this.app.use(express.static("public"))
