@@ -1,4 +1,5 @@
 const express = require('express') //importar la libreri a de express
+const {check}=require('express-validator'); //el check es un middlewares
 const {dbConnection}=require('../database/config')
 const cors = require('cors')
 
@@ -11,7 +12,8 @@ class Server{
         this.pedidosPath="/api/pedidos";     
         this.categoriasmPath="/api/categoriasmenu"; 
         this.rolesPath="/api/roles";      
-        this.paramPath="/api/param";                                                    
+        this.paramPath="/api/param";   
+        this.authPath="/api/auth";                                                 
 
        //conexion BD
        this.conectarDB()
@@ -43,6 +45,7 @@ class Server{
         this.app.use(this.menusPath,require("../routes/menus"));        
         //this.app.use(this.pedidosPath,require("../routes/pedidos"));  
         this.app.use(this.categoriasmPath,require("../routes/categorias"));  
+        this.app.use(this.authPath,require("../routes/auth")); 
         //this.app.use(this.rolesPath,require("../routes/roles"));  
         //this.app.use(this.paramPath,require("../routes/param"));                                                  
 

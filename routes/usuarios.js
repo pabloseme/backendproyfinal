@@ -6,6 +6,7 @@
        const rol = require("../models/rol");
        const router=Router();
        const {esRoleValido,existeEmail,existeUsuarioPorId}=require("../helpers/db-validators");
+       const {validarJWT}=require('../middlewares/validar-jwt');
        
        //endpoint o ruta, y uso el metodo get, indico la ruta y que funcion se ejecuta, recibe la solicitud y un una respuesta
         router.get('/', usuariosGet)        
@@ -29,7 +30,8 @@
         usuariosPut)       
 
         router.delete('/:id',
-        [check("id","No es un ID valido").isMongoId(),
+        [validarJWT,
+        check("id","No es un ID valido").isMongoId(),
         check("id").custom(existeUsuarioPorId),
         validarCampos       
         ]
