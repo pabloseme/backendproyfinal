@@ -8,7 +8,7 @@ const bcrypt=require('bcryptjs');
 const {validationResult}=require("express-validator")
 
 const menusGet=async(req=request, res)=>{    
-    const {limite=5,desde=0}=req.query;
+    const {limite=200,desde=0}=req.query;
     
     ///hacer ambas peticiones simultaneas de manera mas optimas
     const [menus,total]= await Promise.all([
