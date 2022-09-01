@@ -19,10 +19,7 @@ const esCategoriaValido=async (categ="")=>{
             throw new Error(`El Id ${id} no existe en la BD`);
             }         
     }
-
      
-
-
 
 module.exports={    
     existeMenuPorId,

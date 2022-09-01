@@ -7,8 +7,8 @@ const validarJWT=async (req=request,res,next)=>{
 
     ///verificar si viene el toke
     if(!token){
-        res.status(401).json({
-            msg: "no reconoce el Token"
+        return res.status(401).json({
+            msg: "no reconoce el Token - Usuario no valido"
         })
     }
 
@@ -21,13 +21,22 @@ try {
 
     //VERIFICAR SI EL USUARIO EXISTE
     if(!usuario){
-        res.status(401).json({
-            msg: "Token no es Vaálido"
+        return res.status(401).json({
+            msg: "Token no es Vaálido -  Usuario no existe"
         });
     }
 
     //VERIFICAR SI EL USUARIO ESTA ACTIVO
-    
+    if(!usuario.status){
+        return res.status(401).json({
+            msg: "Token no es Vaálido - Usuario suspendido"
+        });        
+    }
+
+
+    //guardo en la request los datos del usuario, es decir creo una propiedad en el req.
+    req.usuario = usuario
+
 
     next();
 } catch (error) {

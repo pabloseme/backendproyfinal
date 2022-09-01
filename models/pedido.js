@@ -12,13 +12,13 @@ const PedidoSchema=Schema({
     },
     cant:{
         type: Number,
-        required:[true,"La categoria es Obligatoria"]
+        required:[true,"La cantidad  es Obligatoria"]
     },   
     preciounit:{
         type:Number
     },
     estado:{
-        type:Boolean,
+        type:String,
         enum:["PENDIENTE","REALIZADO"], 
         default: "PENDIENTE"
     },
@@ -34,4 +34,4 @@ const PedidoSchema=Schema({
 
 
 //Menu, representa el modelo pero puede llevar otro nombre distinto al del archivo
-module.exports=model("Pedido",MenuSchema)
+module.exports=model("Pedido",PedidoSchema)

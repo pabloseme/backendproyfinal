@@ -7,10 +7,13 @@
        const router=Router();
        const {esRoleValido,existeEmail,existeUsuarioPorId}=require("../helpers/db-validators");
        const {validarJWT}=require('../middlewares/validar-jwt');
+       //const { esAdminRole } = require("../middlewares/validar-role");
        
        //endpoint o ruta, y uso el metodo get, indico la ruta y que funcion se ejecuta, recibe la solicitud y un una respuesta
-        router.get('/', usuariosGet)        
-     
+        router.get('/',usuariosGet)        
+       // router.get('/', [validarJWT,esAdminRole],usuariosGet)  
+
+
         //el isEmail, verifica que el campo email, tenga formato de correo electronico
         router.post('/',
         [check("email","Correo no es válido").isEmail(),
@@ -23,14 +26,15 @@
         usuariosPost)       
         
         router.put('/:id',
-        [check("id","No es un ID valido").isMongoId(),
+        [        
+        check("id","No es un ID valido").isMongoId(),
         check("id").custom(existeUsuarioPorId),
         check("role").custom(esRoleValido),
         validarCampos], 
         usuariosPut)       
 
         router.delete('/:id',
-        [validarJWT,
+        [       
         check("id","No es un ID valido").isMongoId(),
         check("id").custom(existeUsuarioPorId),
         validarCampos       

@@ -43,9 +43,10 @@ class Server{
     routes(){
         this.app.use(this.usuariosPath,require("../routes/usuarios"));
         this.app.use(this.menusPath,require("../routes/menus"));        
+        //this.app.use(this.pedidosPath,require("../routes/pedid"));  
         //this.app.use(this.pedidosPath,require("../routes/pedidos"));  
         this.app.use(this.categoriasmPath,require("../routes/categorias"));  
-        this.app.use(this.authPath,require("../routes/auth")); 
+       this.app.use(this.authPath,require("../routes/auth")); 
         //this.app.use(this.rolesPath,require("../routes/roles"));  
         //this.app.use(this.paramPath,require("../routes/param"));                                                  
 
