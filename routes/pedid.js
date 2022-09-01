@@ -4,7 +4,7 @@ const {check}=require('express-validator'); //el check es un middlewares
 const {pedidoGet,pedidoPost,pedidoPut,pedidoDelete}=require("../controllers/pedid");
 const {validarCampos}=require('../middlewares/validar-campos');
 const router=Router();
-const {existeCategPorId}=require("../helpers/db-validacategorias");
+const {existePedidoPorId}=require("../helpers/db-validapedidos");
 
 //endpoint o ruta, y uso el metodo get, indico la ruta y que funcion se ejecuta, recibe la solicitud y un una respuesta
 //router.get('/:codigo',provinciasCodGet)
@@ -25,14 +25,14 @@ router.get('/',
  
  router.put('/:id',
  [check("id","No es un ID valido").isMongoId(),
- check("id").custom(existeCategPorId),
- check("activo","No es un Estado Valido").isIn([true,false]),
+ check("id").custom(existePedidoPorId),
+ //check("activo","No es un Estado Valido").isIn([true,false]),
  validarCampos], 
  pedidoPut)       
 
  router.delete('/:id',
  [check("id","No es un ID valido").isMongoId(),
- check("id").custom(existeCategPorId),
+ check("id").custom(existePedidoPorId),
  validarCampos       
  ]
  ,pedidoDelete )    
