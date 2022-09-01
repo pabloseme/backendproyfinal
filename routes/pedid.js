@@ -26,7 +26,7 @@ router.get('/',
  router.put('/:id',
  [check("id","No es un ID valido").isMongoId(),
  check("id").custom(existePedidoPorId),
- //check("activo","No es un Estado Valido").isIn([true,false]),
+ check("estado","No es un Estado Valido").isIn(['PENDIENTE','REALIZADO']),
  validarCampos], 
  pedidoPut)       
 
