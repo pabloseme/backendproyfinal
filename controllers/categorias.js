@@ -6,7 +6,7 @@ const Categoria = require('../models/categoria');
 const {validationResult}=require("express-validator")
 
 const categoriasGet=async(req=request, res)=>{    
-    const {limite=5,desde=0}=req.query;
+    const {limite=150,desde=0}=req.query;
     
     ///hacer ambas peticiones simultaneas de manera mas optimas
     const [categorias,total]= await Promise.all([
