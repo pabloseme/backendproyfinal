@@ -8,7 +8,7 @@ const bcrypt=require('bcryptjs');
 const {validationResult}=require("express-validator")
 
 const usuariosGet=async(req=request, res)=>{    
-    const {limite=5,desde=0}=req.query;
+    const {limite=150,desde=0}=req.query;
     //const usuarios= await Usuario.find({estado: true})
     //.skip(desde)
     //.limit(limite)

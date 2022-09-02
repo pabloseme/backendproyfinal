@@ -12,7 +12,7 @@ const menusGet=async(req=request, res)=>{
     
     ///hacer ambas peticiones simultaneas de manera mas optimas
     const [menus,total]= await Promise.all([
-        Menu.find({estado: true})
+        Menu.find({activo: true})
         .skip(desde)
         .limit(limite),
         Menu.countDocuments({activo: true})
