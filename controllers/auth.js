@@ -9,15 +9,18 @@ const login=async(req,res)=>{
         
         //verificar si el email existe
         const usuario= await Usuario.findOne({email})
+
         if(!usuario){
             return res.status(400).json({
                 msg : "Email o Password incorrecto"
             })
         }
 
-
+        return res.status(400).json({
+            usuario
+        })  
         ///verificar si el usuario esta activo
-        if (!usuario.status){
+        if (!usuario.estado){
             return res.status(400).json({
                 msg: "Usuario suspendido, comunicarse con el Administrador"
             })
