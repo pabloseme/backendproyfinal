@@ -15,7 +15,6 @@ const login=async(req,res)=>{
                 msg : "Email o Password incorrecto"
             })
         }
-
        
         ///verificar si el usuario esta activo
         if (!usuario.estado){
@@ -33,7 +32,7 @@ const login=async(req,res)=>{
         }
 
         //generar token
-        const token= await generarJWT(usuario.id)
+        const token= await generarJWT(usuario._id)
 
         res.status(200).json({
             usuario,
