@@ -32,11 +32,11 @@ const login=async(req,res)=>{
         }
 
         //generar token
-        const token= await generarJWT(usuario._id)
+        //const token= await generarJWT(usuario._id)
 
         res.status(200).json({
-            usuario,
-            token
+            usuario
+            //token
         })        
     } catch (error) {
         console.log(error);
