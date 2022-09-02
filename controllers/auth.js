@@ -16,9 +16,7 @@ const login=async(req,res)=>{
             })
         }
 
-        return res.status(400).json({
-            usuario
-        })  
+       
         ///verificar si el usuario esta activo
         if (!usuario.estado){
             return res.status(400).json({
