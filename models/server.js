@@ -1,7 +1,8 @@
 const express = require('express') //importar la libreri a de express
-const {check}=require('express-validator'); //el check es un middlewares
-const {dbConnection}=require('../database/config')
 const cors = require('cors')
+const {dbConnection}=require('../database/config')
+
+//const {check}=require('express-validator'); //el check es un middlewares
 
 class Server{
     constructor(){

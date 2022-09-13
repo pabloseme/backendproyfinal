@@ -10,7 +10,7 @@ const login=async(req,res)=>{
         //verificar si el email existe
         const usuario= await Usuario.findOne({email})
 
-        console.log(usuario);
+        console.log("hola");
         if(!usuario){
             return res.status(400).json({
                 msg : "Email o Password incorrecto"
