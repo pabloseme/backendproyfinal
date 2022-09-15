@@ -1,7 +1,7 @@
 const jwt=require('jsonwebtoken')
 
 //voy amandar el id del usuario
-const  generarJWT=(udi)=>{
+const  generarJWT=(uid)=>{
     return new Promise((resolve,reject)=>{
         const payload={uid}
 
