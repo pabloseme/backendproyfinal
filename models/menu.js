@@ -7,8 +7,7 @@ const MenuSchema=Schema({
     },
     precio:{
         type:Number,
-        required:[true,"El Precio es Obligatoria"],
-        unique:true
+        required:[true,"El Precio es Obligatoria"]        
     },
     nombcateg:{
         type: String,
